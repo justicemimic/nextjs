@@ -9,14 +9,19 @@ import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import clsx from 'clsx';
  
-// ...
+// 定義 links 的類型
+const links = [
+  { name: 'Home', href: '/', icon: HomeIcon },
+  { name: 'Users', href: '/users', icon: UserGroupIcon },
+  { name: 'Invoices', href: '/invoices', icon: DocumentDuplicateIcon },
+];
  
 export default function NavLinks() {
   const pathname = usePathname();
  
   return (
     <>
-      {links.map((link) => {
+      {links.map((link: { name: string; href: string; icon: React.ElementType }) => {
         const LinkIcon = link.icon;
         return (
           <Link
